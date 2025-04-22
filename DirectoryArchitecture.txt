@@ -1,0 +1,33 @@
+my-app/
+├── public/
+│   └── index.html
+├── src/
+│   ├── assets/              # Images, fonts, SVGs
+│   ├── components/          # Reusable UI components
+│   │   └── Button/
+│   │       ├── Button.tsx
+│   │       ├── Button.test.tsx
+│   │       └── Button.module.css
+│   ├── features/            # Feature-based modules
+│   │   └── auth/
+│   │       ├── components/  # Components specific to auth
+│   │       ├── hooks/       # Custom hooks
+│   │       ├── pages/       # Pages like Login, Signup
+│   │       ├── services/    # API calls related to auth
+│   │       └── authSlice.ts # Redux or context state
+│   ├── hooks/               # Global reusable hooks
+│   ├── layouts/             # Shared layouts (e.g., DashboardLayout)
+│   ├── pages/               # Top-level routing pages
+│   │   ├── Home.tsx
+│   │   ├── About.tsx
+│   │   └── NotFound.tsx
+│   ├── routes/              # Route definitions
+│   ├── store/               # Redux setup or Context providers
+│   ├── types/               # Global TypeScript types and interfaces
+│   ├── utils/               # Helper functions
+│   ├── App.tsx
+│   └── main.tsx             # ReactDOM.render / createRoot
+├── .env
+├── tsconfig.json
+├── vite.config.ts / webpack.config.js
+└── package.json
