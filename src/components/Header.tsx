@@ -1,4 +1,14 @@
-import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  Container,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import SpaIcon from "@mui/icons-material/Spa";
 
 function Header() {
@@ -9,7 +19,8 @@ function Header() {
         sx={{ backgroundColor: "#ffffff", boxShadow: 2 }}
       >
         <Container maxWidth="xl">
-          <Toolbar>
+          <Toolbar sx={{ justifyContent: "space-between" }}>
+            {/* Logo Section */}
             <Box
               sx={{
                 display: "flex",
@@ -39,10 +50,65 @@ function Header() {
                 INNER HARMONY
               </Typography>
             </Box>
+
+            {/* Navigation List */}
+            <List sx={{ display: "flex" }}>
+              <ListItem sx={{ width: "auto" }}>
+                <ListItemButton
+                  sx={{
+                    color: "#4CAF50", // green text
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    mx: 1, // margin left & right
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#388E3C", // darker green on hover
+                    },
+                  }}
+                >
+                  <ListItemText primary="About Us" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem sx={{ width: "auto" }}>
+                <ListItemButton
+                  sx={{
+                    color: "#4CAF50",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    mx: 1,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#388E3C",
+                    },
+                  }}
+                >
+                  <ListItemText primary="Services" />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem sx={{ width: "auto" }}>
+                <ListItemButton
+                  sx={{
+                    color: "#4CAF50",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                    mx: 1,
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      color: "#388E3C",
+                    },
+                  }}
+                >
+                  <ListItemText primary="Contact" />
+                </ListItemButton>
+              </ListItem>
+            </List>
           </Toolbar>
         </Container>
       </AppBar>
     </>
   );
 }
+
 export default Header;
