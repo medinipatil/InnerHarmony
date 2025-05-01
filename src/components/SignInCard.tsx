@@ -29,57 +29,39 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 function SignInCard() {
-    type FormData = {
-        email: string;
-        password: string
+   
+  const [emailError, setEmailError] = React.useState(false);
+  const [EmailErrorMessage, setEmailErrorMessage] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState(false);
+  const [PasswordErrorMessage, setPasswordErrorMessage] = React.useState('');
+
+  const validateInputs = () => {
+    const email = document.getElementById('email') as HTMLInputElement;
+    const password = document.getElementById('password') as HTMLInputElement;
+
+    let isValid = true;
+
+    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage('');
     }
-    type FormErrors = {
-        email?: string;
-        password?: string
+
+    if (!password.value || password.value.length < 6) {
+      setPasswordError(true);
+      setPasswordErrorMessage('Password must be at least 6 characters long.');
+      isValid = false;
+    } else {
+      setPasswordError(false);
+      setPasswordErrorMessage('');
     }
-    const [formData, setFormData] = useState<FormData>({
-        email: "",
-        password: ""
-    });
-    const [errors, setErrors] = useState<FormErrors>({});
-    const [submitted, setSubmitted] =useState(false);
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const {name, value} =e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
-    };
 
-    const validateForm = () => {
-        let isValid = true;
-        const newErrors: FormErrors = {};
+    return isValid;
+  };
 
-        //validate email
-        if(!formData.email){
-            newErrors.email = "Email is Required";
-            isValid=false;
-        }
-
-        if(!formData.password){
-            newErrors.password = "Password is Required";
-            isValid=false;
-        }
-        setErrors(newErrors);
-        return isValid;
-
-    };
-    const handleSubmit = (e: React.ChangeEvent<HTMLInputElement>) =>{
-        e.preventDefault();
-        if(validateForm()){
-            console.log("Form Data:", formData);
-            setSubmitted(true);
-        }else{
-
-        }
-
-    };
-    const isFormValid = Object.keys(errors).length === 0;
   return (
     <>
       <Header/>
@@ -105,6 +87,8 @@ function SignInCard() {
           <FormControl>
             <FormLabel htmlFor="email">Email</FormLabel>
             <TextField
+              error={passwordError}
+              helperText={PasswordErrorMessage}
               id="email"
               type="email"
               name="email"
@@ -113,7 +97,6 @@ function SignInCard() {
               autoFocus
               fullWidth
               variant="outlined"
-              onSubmit={handleSubmit}
             />
           </FormControl>
           <FormControl>
@@ -129,6 +112,8 @@ function SignInCard() {
               </Link>
             </Box>
             <TextField
+              error = {passwordError}
+              helperText = {PasswordErrorMessage}
               name="password"
               placeholder="....."
               type="password"
@@ -155,6 +140,7 @@ function SignInCard() {
                 transform: "scale(1.05)",
               },
             }}
+            onClick={validateInputs}
           >
             Sign In
           </Button>
