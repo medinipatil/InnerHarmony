@@ -34,6 +34,26 @@ function SignInCard() {
   const [EmailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [PasswordErrorMessage, setPasswordErrorMessage] = React.useState('');
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () =>{
+    setOpen(true);
+  };
+  const handleClose = () =>{
+    setOpen(false);
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>)=>{
+    if(emailError || passwordError){
+      event.preventDefault();
+      return;
+    }
+    const data = new FormData(event.currentTarget);
+    console.log({
+      email: data.get('email'),
+      password: data.get('password')
+    });
+  };
 
   const validateInputs = () => {
     const email = document.getElementById('email') as HTMLInputElement;
@@ -77,6 +97,8 @@ function SignInCard() {
         </Typography>
         <Box
           component="form"
+          onSubmit={handleSubmit}
+          noValidate
           sx={{
             display: "flex",
             flexDirection: "column",
@@ -87,8 +109,8 @@ function SignInCard() {
           <FormControl>
             <FormLabel htmlFor="email">Email</FormLabel>
             <TextField
-              error={passwordError}
-              helperText={PasswordErrorMessage}
+              error={emailError}
+              helperText={EmailErrorMessage}
               id="email"
               type="email"
               name="email"
