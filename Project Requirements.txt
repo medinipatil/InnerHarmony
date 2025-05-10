@@ -1,0 +1,24 @@
+Core Features
+--User Authentication
+
+--Daily Mood Check-In (with emojis/sliders)
+
+--Journal Entries
+
+--AI Chatbot for Support
+
+--Dashboard with Insights (Weekly Mood Trends)
+
+
+Optional Stretch Features (Advanced)
+Voice journaling (speech-to-text)
+
+Sentiment analysis on journals
+
+AI-based wellness advice
+
+Push/email notifications
+
+Resources page with articles, videos, exercises
+
+Crisis detection with emergency support message
