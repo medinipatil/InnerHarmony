@@ -2,6 +2,7 @@ import {
   AppBar,
   Box,
   Container,
+  IconButton,
   List,
   ListItem,
   ListItemButton,
@@ -10,8 +11,12 @@ import {
   Typography,
 } from "@mui/material";
 import SpaIcon from "@mui/icons-material/Spa";
-
-function Header() {
+import MenuIcon from "@mui/icons-material/Menu";
+type HeaderProps = {
+  isLoggedIn: boolean;
+  onToggleSidebar: () => void;
+};
+function Header({ isLoggedIn, onToggleSidebar }: HeaderProps) {
   return (
     <>
       <AppBar
@@ -19,8 +24,13 @@ function Header() {
         sx={{ backgroundColor: "#ffffff", boxShadow: 2 }}
       >
         <Container maxWidth="xl">
-          <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Toolbar sx={{display: "flex", justifyContent: "space-between",left: "-150px" }}>
             {/* Logo Section */}
+            {isLoggedIn && (
+              <IconButton edge="start" onClick={onToggleSidebar}>
+                 <MenuIcon sx={{ color: "#4CAF50" }} />
+              </IconButton>
+            )}
             <Box
               sx={{
                 display: "flex",

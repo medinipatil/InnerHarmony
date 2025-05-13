@@ -5,7 +5,7 @@ function UserDashboard(){
     return(
         <>
         <Sidebar/>
-        <MoodSurvey/>
+       
         </>
     );
 
